@@ -30,6 +30,15 @@
       color: var(--text-color);
       background: var(--bg-light);
       line-height:1.6;
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    /* Ensure all page sections are visible */
+    section, .staff-page, .clients-page, .partners-page {
+      visibility: visible !important;
+      opacity: 1 !important;
+      display: block !important;
     }
     
     /* Navbar - Enhanced Design */
@@ -1524,12 +1533,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 1000;
+      z-index: 10000;
       transition: opacity 0.5s, visibility 0.5s;
     }
     .loader.hidden {
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
+    }
+    
+    /* Ensure loader doesn't block page content */
+    body.loaded .loader {
+      display: none;
     }
     .loader::after {
       content: '';

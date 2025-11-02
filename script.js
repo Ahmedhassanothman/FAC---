@@ -1,53 +1,36 @@
-// Wait for all resources to load before showing content
-    function initApp() {
-      // Show body and hide loader
-      document.body.classList.add('loaded');
+// Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 50
+    });
+
+    // Loading animation
+    window.addEventListener('load', () => {
       const loader = document.querySelector('.loader');
       if (loader) {
         loader.classList.add('hidden');
+        document.body.classList.add('loaded');
         setTimeout(() => {
           loader.style.display = 'none';
         }, 500);
       }
-    }
-
-    // Wait for CSS to load
-    function waitForStyles() {
-      const stylesheets = document.styleSheets;
-      let allLoaded = true;
-      
-      // Check if main stylesheet is loaded
-      for (let i = 0; i < stylesheets.length; i++) {
-        try {
-          if (stylesheets[i].href && stylesheets[i].href.includes('style.css')) {
-            // Check if stylesheet is loaded
-            const rules = stylesheets[i].cssRules || stylesheets[i].rules;
-            if (!rules || rules.length === 0) {
-              allLoaded = false;
-              break;
-            }
-          }
-        } catch (e) {
-          // Cross-origin stylesheet, assume loaded
+    });
+    
+    // Fallback: Hide loader after DOMContentLoaded if window.load doesn't fire
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const loader = document.querySelector('.loader');
+        if (loader && !loader.classList.contains('hidden')) {
+          loader.classList.add('hidden');
+          document.body.classList.add('loaded');
+          setTimeout(() => {
+            loader.style.display = 'none';
+          }, 500);
         }
-      }
-      
-      if (allLoaded || document.readyState === 'complete') {
-        initApp();
-      } else {
-        setTimeout(waitForStyles, 50);
-      }
-    }
-
-    // Start checking when page starts loading
-    if (document.readyState === 'complete') {
-      initApp();
-    } else {
-      window.addEventListener('load', () => {
-        // Wait a bit more for all CSS to apply
-        setTimeout(initApp, 100);
-      });
-    }
+      }, 1000);
+    });
 
     // Smooth scroll for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -67,11 +50,16 @@
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     
-    mobileMenuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
-      mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
-    });
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = mobileMenuBtn.querySelector('i');
+        if (icon) {
+          icon.classList.toggle('fa-bars');
+          icon.classList.toggle('fa-times');
+        }
+      });
+    }
 
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
@@ -148,7 +136,8 @@
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
 
-    contactForm.addEventListener('submit', async function(e) {
+    if (contactForm) {
+      contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
 
       // Get form data
@@ -228,6 +217,7 @@
         }, 5000);
       }
     });
+    }
 
     // Enhanced scroll animations
     window.addEventListener('scroll', () => {
