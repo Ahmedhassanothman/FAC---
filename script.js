@@ -1,19 +1,53 @@
-// Initialize AOS
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 50
-    });
-
-    // Loading animation
-    window.addEventListener('load', () => {
+// Wait for all resources to load before showing content
+    function initApp() {
+      // Show body and hide loader
+      document.body.classList.add('loaded');
       const loader = document.querySelector('.loader');
-      loader.classList.add('hidden');
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 500);
-    });
+      if (loader) {
+        loader.classList.add('hidden');
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      }
+    }
+
+    // Wait for CSS to load
+    function waitForStyles() {
+      const stylesheets = document.styleSheets;
+      let allLoaded = true;
+      
+      // Check if main stylesheet is loaded
+      for (let i = 0; i < stylesheets.length; i++) {
+        try {
+          if (stylesheets[i].href && stylesheets[i].href.includes('style.css')) {
+            // Check if stylesheet is loaded
+            const rules = stylesheets[i].cssRules || stylesheets[i].rules;
+            if (!rules || rules.length === 0) {
+              allLoaded = false;
+              break;
+            }
+          }
+        } catch (e) {
+          // Cross-origin stylesheet, assume loaded
+        }
+      }
+      
+      if (allLoaded || document.readyState === 'complete') {
+        initApp();
+      } else {
+        setTimeout(waitForStyles, 50);
+      }
+    }
+
+    // Start checking when page starts loading
+    if (document.readyState === 'complete') {
+      initApp();
+    } else {
+      window.addEventListener('load', () => {
+        // Wait a bit more for all CSS to apply
+        setTimeout(initApp, 100);
+      });
+    }
 
     // Smooth scroll for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
