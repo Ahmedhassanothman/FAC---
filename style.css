@@ -1423,9 +1423,10 @@
 
     @media (max-width: 480px) {
       .floating-contact-buttons {
-        bottom: 15px;
-        right: 15px;
+        bottom: 20px;
+        right: 20px;
         gap: 10px;
+        z-index: 1001;
       }
 
       .floating-contact-buttons a {
@@ -2626,6 +2627,10 @@
         height: 50px;
       }
       
+      footer {
+        padding-bottom: 120px !important; /* Add space for floating buttons */
+      }
+      
       .footer-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -2662,10 +2667,83 @@
         margin: 0 auto;
       }
 
+      /* Certificates Grid Mobile Styles */
+      .certificates-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem;
+        padding-bottom: 0;
+        margin-bottom: 1rem;
+      }
+      
+      .footer-section {
+        margin-bottom: 1.5rem;
+      }
+      
+      .footer-section:last-of-type {
+        margin-bottom: 2rem;
+      }
+
+      .cert-card {
+        padding: 0.9rem !important;
+        gap: 0.8rem !important;
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .cert-card .cert-icon {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 1rem !important;
+        flex-shrink: 0;
+      }
+
+      .cert-card span {
+        font-size: 0.75rem !important;
+        line-height: 1.4;
+        text-align: right;
+      }
+
+      .footer-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+      }
+
       .footer-bottom {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
+        padding: 1.5rem 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      footer {
+        padding-bottom: 110px !important;
+      }
+      
+      .certificates-grid {
+        gap: 0.7rem;
+      }
+
+      .cert-card {
+        padding: 0.75rem !important;
+        gap: 0.7rem !important;
+      }
+
+      .cert-card .cert-icon {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 0.9rem !important;
+      }
+
+      .cert-card span {
+        font-size: 0.7rem !important;
+        line-height: 1.35;
+      }
+
+      .footer-section h3 {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
       }
     }
 
