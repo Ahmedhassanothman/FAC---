@@ -57,7 +57,7 @@
     }
     
     body, p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, input, textarea, select, button {
-      font-family: 'Sakkal Majalla', 'Effra', 'Montserrat', 'Inter', 'Noto Sans Arabic', sans-serif;
+      font-family: 'Sakkal Majalla', '', '', '', ' Sans Arabic', sans-serif;
     }
     
     /* Font size for regular text elements */
