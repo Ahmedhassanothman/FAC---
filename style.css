@@ -36,6 +36,19 @@
       line-height:1.6;
       visibility: visible;
       opacity: 1;
+      white-space: normal;
+    }
+    
+    /* Ensure line breaks work on all devices */
+    br {
+      display: block;
+      content: "";
+      margin-top: 0;
+    }
+    
+    /* Ensure all text elements respect line breaks */
+    h1, h2, h3, h4, h5, h6, p, span, div, a, li {
+      white-space: normal;
     }
     
     /* Ensure all text elements use Sakkal Majalla */
@@ -671,6 +684,9 @@
       color: var(--primary-color);
       font-size: 0.9rem;
       font-weight: 600;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
 
     /* Statistics Section */
@@ -1704,6 +1720,9 @@
       text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
       animation: gradient-shift 3s ease infinite;
       background-size: 200% 200%;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     
     @keyframes gradient-shift {
@@ -1919,6 +1938,9 @@
       }
       .hero-title {
         font-size: 2.5rem;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
       .hero-tagline {
         font-size: 1.2rem;
