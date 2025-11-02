@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAC - فاينانس للمحاسبه - عملاؤنا</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Effra Font -->
+  <link rel="preconnect" href="https://fonts.cdnfonts.com">
+  <link href="https://fonts.cdnfonts.com/css/effra" rel="stylesheet">
+  
+  <link rel="icon" href="IMG S/LOGO.jpg" type="image/jpeg">
+  <link rel="shortcut icon" href="IMG S/LOGO.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="IMG S/LOGO.jpg">
+  
+  <meta name="theme-color" content="#1e3a8a">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Clients Section Styles */
+    .clients-page {
+      padding: 120px 0 6rem;
+      background: var(--bg-light);
+      min-height: 100vh;
+    }
+
+    .clients-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      padding: 0 20px;
+    }
+
+    .clients-header h1 {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    .clients-header h1::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+
+    .clients-header p {
+      font-size: 1.2rem;
+      color: #6b7280;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      padding: 2rem 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .client-logo-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .client-logo-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.2;
+      transition: opacity 0.3s ease;
+    }
+
+    .client-logo-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.15);
+    }
+
+    .client-logo-card:hover::before {
+      opacity: 0.4;
+    }
+
+    .client-logo {
+      width: 100%;
+      max-width: 200px;
+      height: 150px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+      filter: grayscale(0%);
+    }
+
+    .client-logo-card:hover .client-logo {
+      transform: scale(1.1);
+      filter: grayscale(0%);
+    }
+
+    .client-logo-card {
+      min-height: 180px;
+      padding: 2rem;
+    }
+    
+    .client-logo {
+      margin-bottom: 0;
+    }
+    
+    .client-name,
+    .client-description {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .clients-page {
+        padding: 100px 0 4rem;
+      }
+
+      .clients-header h1 {
+        font-size: 2.2rem;
+      }
+
+      .clients-header p {
+        font-size: 1rem;
+      }
+
+      .clients-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem 15px;
+      }
+
+      .client-logo-card {
+        padding: 1.5rem;
+        min-height: 150px;
+      }
+
+      .client-logo {
+        max-width: 150px;
+        height: 120px;
+        margin-bottom: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .clients-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Animation -->
+  <div class="loader"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="index.html#hero">الرئيسية</a></li>
+        <li><a href="index.html#about">عن الشركة</a></li>
+        <li><a href="index.html#services">خدماتنا</a></li>
+        <li><a href="index.html#stats">إنجازاتنا</a></li>
+        <li><a href="index.html#pricing">الأسعار</a></li>
+        <li><a href="clients.html" class="active">عملاؤنا</a></li>
+        <li><a href="index.html#contact">اتصل بنا</a></li>
+      </ul>
+      <a href="index.html" class="logo">
+        <img src="IMG S/LOGO.jpg" alt="FAC - فاينانس للمحاسبه">
+      </a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Clients Page -->
+  <section class="clients-page">
+    <div class="clients-header" data-aos="fade-up">
+      <h1>عملاؤنا</h1>
+      <p>نفتخر بثقة عملائنا الكرام ونعمل باستمرار على تقديم أفضل الخدمات المحاسبية والمالية</p>
+    </div>
+
+    <div class="clients-grid">
+      <!-- Client Logo 1 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="IMG S/ICON/1.png" alt="عميل 1" class="client-logo">
+      </div>
+
+      <!-- Client Logo 2 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="IMG S/ICON/2.png" alt="عميل 2" class="client-logo">
+      </div>
+
+      <!-- Client Logo 3 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="IMG S/ICON/3.png" alt="عميل 3" class="client-logo">
+      </div>
+
+      <!-- Client Logo 4 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="400">
+        <img src="IMG S/ICON/4.png" alt="عميل 4" class="client-logo">
+      </div>
+
+      <!-- Client Logo 5 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="500">
+        <img src="IMG S/ICON/5.png" alt="عميل 5" class="client-logo">
+      </div>
+
+      <!-- Client Logo 6 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="600">
+        <img src="IMG S/ICON/6.png" alt="عميل 6" class="client-logo">
+      </div>
+
+      <!-- Client Logo 7 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="700">
+        <img src="IMG S/ICON/7.png" alt="عميل 7" class="client-logo">
+      </div>
+
+      <!-- Client Logo 8 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="800">
+        <img src="IMG S/ICON/8.png" alt="عميل 8" class="client-logo">
+      </div>
+
+      <!-- Client Logo 9 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="900">
+        <img src="IMG S/ICON/9.png" alt="عميل 9" class="client-logo">
+      </div>
+
+      <!-- Client Logo 10 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="1000">
+        <img src="IMG S/ICON/10.png" alt="عميل 10" class="client-logo">
+      </div>
+
+      <!-- Client Logo 11 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="1100">
+        <img src="IMG S/ICON/11.png" alt="عميل 11" class="client-logo">
+      </div>
+
+      <!-- Client Logo 12 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="1200">
+        <img src="IMG S/ICON/12.png" alt="عميل 12" class="client-logo">
+      </div>
+
+      <!-- Client Logo 13 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="1300">
+        <img src="IMG S/ICON/13.png" alt="عميل 13" class="client-logo">
+      </div>
+
+      <!-- Client Logo 14 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="1400">
+        <img src="IMG S/ICON/14.png" alt="عميل 14" class="client-logo">
+      </div>
+
+      <!-- Client Logo 15 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="1500">
+        <img src="IMG S/ICON/15.png" alt="عميل 15" class="client-logo">
+      </div>
+
+      <!-- Client Logo 16 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="1600">
+        <img src="IMG S/ICON/16.png" alt="عميل 16" class="client-logo">
+      </div>
+
+      <!-- Client Logo 17 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="1700">
+        <img src="IMG S/ICON/17.png" alt="عميل 17" class="client-logo">
+      </div>
+
+      <!-- Client Logo 18 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="1800">
+        <img src="IMG S/ICON/18.png" alt="عميل 18" class="client-logo">
+      </div>
+
+      <!-- Client Logo 19 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="1900">
+        <img src="IMG S/ICON/19.png" alt="عميل 19" class="client-logo">
+      </div>
+
+      <!-- Client Logo 20 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="2000">
+        <img src="IMG S/ICON/20.png" alt="عميل 20" class="client-logo">
+      </div>
+
+      <!-- Client Logo 22 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="2100">
+        <img src="IMG S/ICON/22.png" alt="عميل 22" class="client-logo">
+      </div>
+
+      <!-- Client Logo 23 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="2200">
+        <img src="IMG S/ICON/23.png" alt="عميل 23" class="client-logo">
+      </div>
+
+      <!-- Client Logo 24 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="2300">
+        <img src="IMG S/ICON/24.png" alt="عميل 24" class="client-logo">
+      </div>
+
+      <!-- Client Logo 25 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="2400">
+        <img src="IMG S/ICON/25.png" alt="عميل 25" class="client-logo">
+      </div>
+
+      <!-- Client Logo 26 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="2500">
+        <img src="IMG S/ICON/26.png" alt="عميل 26" class="client-logo">
+      </div>
+
+      <!-- Client Logo 27 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="2600">
+        <img src="IMG S/ICON/27.png" alt="عميل 27" class="client-logo">
+      </div>
+
+      <!-- Client Logo 28 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="2700">
+        <img src="IMG S/ICON/28.png" alt="عميل 28" class="client-logo">
+      </div>
+
+      <!-- Client Logo 29 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="2800">
+        <img src="IMG S/ICON/29.png" alt="عميل 29" class="client-logo">
+      </div>
+
+      <!-- Client Logo 30 -->
+      <div class="client-logo-card" data-aos="fade-up" data-aos-delay="2900">
+        <img src="IMG S/ICON/30.png" alt="عميل 30" class="client-logo">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-pattern"></div>
+    <div class="container">
+      <div class="footer-main">
+        <!-- Column 1: Quick Links -->
+        <div class="footer-section" data-aos="fade-up">
+          <h3>الهيئات المرتبطة بنا</h3>
+          <div class="footer-organizations">
+            <div class="org-image" data-aos="zoom-in" data-aos-delay="100">
+              <img src="IMG S/555.png" alt="هيئة مرتبطة">
+            </div>
+            <div class="org-image" data-aos="zoom-in" data-aos-delay="200">
+              <img src="IMG S/777.png" alt="هيئة مرتبطة">
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Contact Info -->
+        <div class="footer-section" data-aos="fade-up" data-aos-delay="100">
+          <h3>معلومات التواصل</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-text">+966 596 201 906</div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">acc.soq@gmail.com</div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">الرياض، المملكة العربية السعودية</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Certificates -->
+        <div class="footer-section" data-aos="fade-up" data-aos-delay="200">
+          <h3>شهادات واعتمادات</h3>
+          <div class="certificates-grid">
+            <div class="cert-card" data-aos="zoom-in" data-aos-delay="200">
+              <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
+              <span>بكالوريوس تجارة – قسم محاسبة</span>
+            </div>
+            <div class="cert-card" data-aos="zoom-in" data-aos-delay="260">
+              <div class="cert-icon"><i class="fas fa-computer"></i></div>
+              <span>دورة متقدمة في قيادة الحاسب الآلي</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom">
+        <div class="copyright">
+          <p>© 2025 FAC - فاينانس للمحاسبه. جميع الحقوق محفوظة.</p>
+        </div>
+        <div class="bottom-links">
+          <a href="#">سياسة الخصوصية</a>
+          <span class="divider">|</span>
+          <a href="#">الشروط والأحكام</a>
+          <span class="divider">|</span>
+          <a href="#">خريطة الموقع</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Floating Contact Buttons -->
+  <div class="floating-contact-buttons">
+    <a href="https://wa.me/966537783067" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+201012691359" class="phone-float" aria-label="Call">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+  </div>
+
+</body>
+</html>
+

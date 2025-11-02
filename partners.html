@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAC - فاينانس للمحاسبه - شركاء النجاح</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Effra Font -->
+  <link rel="preconnect" href="https://fonts.cdnfonts.com">
+  <link href="https://fonts.cdnfonts.com/css/effra" rel="stylesheet">
+  
+  <link rel="icon" href="IMG S/LOGO.jpg" type="image/jpeg">
+  <link rel="shortcut icon" href="IMG S/LOGO.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="IMG S/LOGO.jpg">
+  
+  <meta name="theme-color" content="#1e3a8a">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Partners Section Styles */
+    .partners-page {
+      padding: 120px 0 6rem;
+      background: var(--bg-light);
+      min-height: 100vh;
+    }
+
+    .partners-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      padding: 0 20px;
+    }
+
+    .partners-header h1 {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    .partners-header h1::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+
+    .partners-header p {
+      font-size: 1.2rem;
+      color: #6b7280;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      padding: 2rem 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .partner-logo-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .partner-logo-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.2;
+      transition: opacity 0.3s ease;
+    }
+
+    .partner-logo-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.15);
+    }
+
+    .partner-logo-card:hover::before {
+      opacity: 0.4;
+    }
+
+    .partner-logo {
+      width: 100%;
+      max-width: 200px;
+      height: 150px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+      filter: grayscale(0%);
+    }
+
+    .partner-logo-card:hover .partner-logo {
+      transform: scale(1.1);
+      filter: grayscale(0%);
+    }
+
+    .partner-name {
+      font-size: 1rem;
+      color: var(--primary-color);
+      text-align: center;
+      font-weight: 600;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0 0.5rem;
+    }
+
+    .partner-description {
+      font-size: 0.85rem;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 0.5rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+    
+    .partner-link-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.25);
+      margin-top: auto;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .partner-link-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .partner-link-button:hover::before {
+      left: 100%;
+    }
+    
+    .partner-link-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    }
+    
+    .partner-link-button i {
+      font-size: 0.9rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .partner-link-button:hover i {
+      transform: translateX(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .partners-page {
+        padding: 100px 0 4rem;
+      }
+
+      .partners-header h1 {
+        font-size: 2.2rem;
+      }
+
+      .partners-header p {
+        font-size: 1rem;
+      }
+
+      .partners-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem 15px;
+      }
+
+      .partner-logo-card {
+        padding: 2rem 1.5rem;
+        min-height: 180px;
+      }
+
+      .partner-logo {
+        max-width: 150px;
+        height: 120px;
+        margin-bottom: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .partners-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Animation -->
+  <div class="loader"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="index.html#hero">الرئيسية</a></li>
+        <li><a href="index.html#about">عن الشركة</a></li>
+        <li><a href="index.html#services">خدماتنا</a></li>
+        <li><a href="index.html#stats">إنجازاتنا</a></li>
+        <li><a href="index.html#pricing">الأسعار</a></li>
+        <li><a href="clients.html">عملاؤنا</a></li>
+        <li><a href="partners.html" class="active">شركاء النجاح</a></li>
+        <li><a href="index.html#contact">اتصل بنا</a></li>
+      </ul>
+      <a href="index.html" class="logo">
+        <img src="IMG S/LOGO.jpg" alt="FAC - فاينانس للمحاسبه">
+      </a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Partners Page -->
+  <section class="partners-page">
+    <div class="partners-header" data-aos="fade-up">
+      <h1>شركاء النجاح</h1>
+      <p>نفتخر بثقة شركائنا الكرام ونعمل باستمرار على تقديم أفضل الخدمات المحاسبية والمالية</p>
+    </div>
+
+    <div class="partners-grid">
+      <!-- Partner Logo 1 -->
+      <div class="partner-logo-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="IMG S/10.jpg" alt="شريك 1" class="partner-logo">
+        <h3 class="partner-name">شركة ياسر الطالع</h3>
+        <p class="partner-description">شركة ياسر الطالع شركة مهنية وطنية رائدة تقدم خدمات المراجعة والاستشارات المالية والضريبية بمعايير عالمية.</p>
+        <a href="https://altala.com.sa/" target="_blank" class="partner-link-button">
+          <span>زيارة الموقع</span>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+
+      <!-- Partner Logo 2 -->
+      <div class="partner-logo-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="IMG S/20.jpg" alt="شريك 2" class="partner-logo">
+        <h3 class="partner-name">شركة سعد القثامي</h3>
+        <p class="partner-description">شركة سعد خلف القثامي مكتب محاسبة واستشارات مالية رائد، يقوده الخبير سعد القثامي بخبرة تتجاوز 30 عامًا في المراجعة والمحاسبة.</p>
+        <a href="https://gethami.com/" target="_blank" class="partner-link-button">
+          <span>زيارة الموقع</span>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+
+      <!-- Partner Logo 3 -->
+      <div class="partner-logo-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="IMG S/30.jpg" alt="شريك 3" class="partner-logo">
+        <h3 class="partner-name">Manager.io</h3>
+        <p class="partner-description">برنامج محاسبي مجاني لنظامي ويندوز وماك ولينكس.</p>
+        <a href="https://www.manager.io" target="_blank" class="partner-link-button">
+          <span>زيارة الموقع</span>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+
+      <!-- Partner Logo 4 -->
+      <div class="partner-logo-card" data-aos="fade-up" data-aos-delay="400">
+        <img src="IMG S/40.png" alt="شريك 4" class="partner-logo">
+        <h3 class="partner-name">Aliphia</h3>
+        <p class="partner-description">ألف ياء برنامج محاسبة عربي من تطوير شركة صحيح بيزنس، صُمم ليسهّل على الشركات الصغيرة إدارة الفواتير والحسابات بكفاءة.</p>
+        <a href="https://aliphia.com" target="_blank" class="partner-link-button">
+          <span>زيارة الموقع</span>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-pattern"></div>
+    <div class="container">
+      <div class="footer-main">
+        <!-- Column 1: Quick Links -->
+        <div class="footer-section" data-aos="fade-up">
+          <h3>الهيئات المرتبطة بنا</h3>
+          <div class="footer-organizations">
+            <div class="org-image" data-aos="zoom-in" data-aos-delay="100">
+              <img src="IMG S/555.png" alt="هيئة مرتبطة">
+            </div>
+            <div class="org-image" data-aos="zoom-in" data-aos-delay="200">
+              <img src="IMG S/777.png" alt="هيئة مرتبطة">
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Contact Info -->
+        <div class="footer-section" data-aos="fade-up" data-aos-delay="100">
+          <h3>معلومات التواصل</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-text">+966 596 201 906</div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">acc.soq@gmail.com</div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">الرياض، المملكة العربية السعودية</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Certificates -->
+        <div class="footer-section" data-aos="fade-up" data-aos-delay="200">
+          <h3>شهادات واعتمادات</h3>
+          <div class="certificates-grid">
+            <div class="cert-card" data-aos="zoom-in" data-aos-delay="200">
+              <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
+              <span>بكالوريوس تجارة – قسم محاسبة</span>
+            </div>
+            <div class="cert-card" data-aos="zoom-in" data-aos-delay="260">
+              <div class="cert-icon"><i class="fas fa-computer"></i></div>
+              <span>دورة متقدمة في قيادة الحاسب الآلي</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom">
+        <div class="copyright">
+          <p>© 2025 FAC - فاينانس للمحاسبه. جميع الحقوق محفوظة.</p>
+        </div>
+        <div class="bottom-links">
+          <a href="#">سياسة الخصوصية</a>
+          <span class="divider">|</span>
+          <a href="#">الشروط والأحكام</a>
+          <span class="divider">|</span>
+          <a href="#">خريطة الموقع</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Floating Contact Buttons -->
+  <div class="floating-contact-buttons">
+    <a href="https://wa.me/966537783067" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+201012691359" class="phone-float" aria-label="Call">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+  </div>
+
+</body>
+</html>
+
